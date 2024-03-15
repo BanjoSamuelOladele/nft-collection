@@ -1,13 +1,13 @@
-
+import { createWeb3Modal, defaultConfig } from "@web3modal/ethers"
 
 
 // 2. Set chains
-const mainnet = {
-    chainId: 1,
+const mumbai = {
+    chainId: import.meta.env.VITE_chainId,
     name: 'Ethereum',
     currency: 'ETH',
-    explorerUrl: 'https://etherscan.io',
-    rpcUrl: 'https://cloudflare-eth.com'
+    explorerUrl: import.meta.env.VITE_explore_url,
+    rpcUrl: import.meta.env.VITE_rpc_call
 }
 
 const metadata = {
@@ -18,9 +18,12 @@ const metadata = {
 }
 
 createWeb3Modal({
-    ethersConfig,
-    chains: [mainnet],
-    projectId,
-    enableAnalytics: true // Optional - defaults to your Cloud configuration
+    ethersConfig: defaultConfig({metadata}),
+    chains: [mumbai],
+    projectId: import.meta.env.VITE_projectId,
+    enableAnalytics: false // Optional - defaults to your Cloud configuration
 })
+
+
+export const configureWallet = () => createWeb3Modal();
 
