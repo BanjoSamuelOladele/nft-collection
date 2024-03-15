@@ -2,11 +2,12 @@ import { configureWallet } from "./connection"
 import Header from "./functions/Header"
 
 
-configureWallet()
+configureWallet();
+
 function App() {
 
   return (
-    <Header/>
+    <Header />
   )
 }
 

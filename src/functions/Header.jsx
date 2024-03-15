@@ -1,17 +1,14 @@
-import { Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes"
 
 
 
-
-const Header = () => {
-    return(
+export default function Header () {
+    return (
         <div className="flex justify-between items-center">
-            <div>Echelon NFT Collection</div>
+            <div>Meta NFT</div>
             <Flex gap={"4"} align={"center"}>
                 <w3m-button />
             </Flex>
         </div>
-    )
+    );
 }
-
-export default Header;
