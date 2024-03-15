@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { tokenIDss } from "./tokenId";
 
 
 const useCollection = () => {
@@ -8,11 +9,9 @@ const useCollection = () => {
 
     useEffect(() => {
         (async () => {
-            const tokenIDs = [...Array.from({ length: 30 })].map(
-                (_, index) => index
-            );
+            // const tokenIDs = tokenIDss;
 
-            const promises = tokenIDs.map((x) =>
+            const promises = tokenIDss.map((x) =>
                 fetch("https://violet-wrong-mouse-159.mypinata.cloud/ipfs/QmS5tuypbF49Yq3ja8Sc5HdpuBFRwDZfJR6R6jwyAMANB7"+`/${x}`)
             );
 
