@@ -13,7 +13,7 @@ const useCollection = () => {
             );
 
             const promises = tokenIDs.map((x) =>
-                fetch(`${import.meta.env.VITE_base_nft_url}/${x}`)
+                fetch("https://violet-wrong-mouse-159.mypinata.cloud/ipfs/QmS5tuypbF49Yq3ja8Sc5HdpuBFRwDZfJR6R6jwyAMANB7"+`/${x}`)
             );
 
             const tokensMetadataResponse = await Promise.all(promises);
