@@ -3,6 +3,7 @@ import { configureWallet } from "./connection"
 import Header from "./functions/Header"
 import useCollection from "./hooks/useCollection";
 import AppTab from "./functions/AppTab";
+import Cards from "./functions/Card";
 
 
 configureWallet();
@@ -15,15 +16,25 @@ function App() {
 
   return (
     <Container>
-       <Header />
+      <Header />
+      <main className="mt-6">
        <AppTab 
         MyNfts={
-          <Flex />
+          <> </>
         }
         AllCollections={
-          <Flex />
+          collect.length === 0 ? (<h1>loading...</h1>) : (
+            collect.map(x => (
+              <Cards 
+                dna={x.dna}
+                name={x.name}
+                description={x.description}
+                image={x.image}
+              />
+          )))
         }
        />
+      </main>
     </Container>
   )
 }
