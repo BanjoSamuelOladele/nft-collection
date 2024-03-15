@@ -11,7 +11,7 @@ const useCollection = () => {
         (async () => {
             // const tokenIDs = tokenIDss;
 
-            const promises = tokenIDss.map((x) =>
+            const promises = tokenIDss(30).map((x) =>
                 fetch("https://violet-wrong-mouse-159.mypinata.cloud/ipfs/QmS5tuypbF49Yq3ja8Sc5HdpuBFRwDZfJR6R6jwyAMANB7"+`/${x}`)
             );
 

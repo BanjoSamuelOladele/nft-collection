@@ -1,35 +1,30 @@
 
 
 import { ethers } from "ethers";
-import erc721 from "../constants/erc721.json";
-import multicallAbi from "../constants/multicall.json";
-import { readOnlyProvider } from "../constants/providers";
 import { useEffect, useMemo, useState } from "react";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+import abi from "../constants/abi.json";
+import multicallAbi from "../constants/multiCallAbi.json";
+import { rpcReadOnly } from "../constants/provider";
 
 const useNFT = () => {
 
 
     const { address } = useWeb3ModalAccount();
     const [data, setData] = useState([]);
-    
-    const tokenIDs = useMemo(
-        () => [...Array.from({ length: 30 })].map((_, index) => index),
-        []
-    );
 
     useEffect(() => {
         (async () => {
-            const itf = new ethers.Interface(erc721);
-            const calls = tokenIDs.map((x) => ({
-                target: import.meta.env.VITE_contract_address,
+            const itf = new ethers.Interface(abi);
+            const calls = tokenIDss(30).map((x) => ({
+                target: import.meta.env.VITE_contractAddress,
                 callData: itf.encodeFunctionData("ownerOf", [x]),
             }));
 
             const multicall = new ethers.Contract(
-                import.meta.env.VITE_multicall_address,
+                import.meta.env.VITE_multiCallContractAddress,
                 multicallAbi,
-                readOnlyProvider
+                rpcReadOnly
             );
 
             const callResults = await multicall.tryAggregate.staticCall(
@@ -66,4 +61,4 @@ const useNFT = () => {
     return data;
 };
 
-export default useMyNfts;
+export default useNFT;

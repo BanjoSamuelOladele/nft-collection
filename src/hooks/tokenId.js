@@ -1,5 +1,5 @@
 
 
-export const tokenIDss = [...Array.from({ length: 30 })].map(
+export const tokenIDss = (x) => [...Array.from({ length: x })].map(
     (_, index) => index
 );
