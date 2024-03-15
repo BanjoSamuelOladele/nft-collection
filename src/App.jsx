@@ -4,6 +4,7 @@ import Header from "./functions/Header"
 import useCollection from "./hooks/useCollection";
 import AppTab from "./functions/AppTab";
 import Cards from "./functions/Card";
+// import useNFT from "./hooks/useNFT";
 
 
 configureWallet();
@@ -11,6 +12,10 @@ configureWallet();
 function App() {
 
   const collect = useCollection();
+
+  // const useN = useNFT();
+
+  // console.log(useN)
 
   console.log("Collection:::",collect)
 
@@ -20,7 +25,16 @@ function App() {
       <main className="mt-6">
        <AppTab 
         MyNfts={
-          <> </>
+          // useN.map(x => (
+          //   // <Cards 
+          //   //     dna={x.dna}
+          //   //     name={x.name}
+          //   //     description={x.description}
+          //   //     image={x.image}
+          //   //   />
+          //   <></>
+          // ))
+          <></>
         }
         AllCollections={
           collect.length === 0 ? (<h1>loading...</h1>) : (
